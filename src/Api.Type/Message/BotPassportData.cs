@@ -1,9 +1,11 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace GarageGroup.Infra.Telegram.Bot;
 
 public sealed record class BotPassportData
 {
+    [JsonConstructor]
     public BotPassportData(FlatArray<BotEncryptedPassportElement> data, BotEncryptedCredentials credentials)
     {
         Data = data;

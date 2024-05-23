@@ -16,6 +16,7 @@ public static class BotDefaultJson
                 new JsonStringEnumConverter(JsonNamingPolicy.SnakeCaseLower),
                 new UnixDateTimeJsonConverter(),
                 new BotChatMemberJsonConverter(),
+                new BotMessageOriginJsonConverter(),
                 new BotPassportDataJsonConverter()
             },
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
