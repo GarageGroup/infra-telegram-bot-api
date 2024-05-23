@@ -34,5 +34,9 @@ public enum BotMessageEntityType
 
     Strikethrough,
 
-    Spoiler
+    Spoiler,
+
+    Blockquote,
+
+    CustomEmoji
 }
