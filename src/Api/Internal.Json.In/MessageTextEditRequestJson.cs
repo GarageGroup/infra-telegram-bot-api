@@ -4,9 +4,7 @@ namespace GarageGroup.Infra.Telegram.Bot;
 
 internal sealed record class MessageTextEditRequestJson : IRequestJson<BotMessage?>
 {
-    public static string BotMethod
-        =>
-        "editMessageText";
+    public static string BotMethod { get; } = "editMessageText";
 
     public required long? ChatId { get; init; }
 

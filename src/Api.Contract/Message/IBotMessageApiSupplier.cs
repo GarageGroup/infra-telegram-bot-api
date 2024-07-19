@@ -20,4 +20,7 @@ public interface IBotMessageApiSupplier
 
     ValueTask<Result<Unit, Failure<TelegramBotFailureCode>>> DeleteMessageSetAsync(
         BotMessageSetDeleteIn input, CancellationToken cancellationToken);
+
+    ValueTask<Result<BotMessage, Failure<TelegramBotFailureCode>>> SendPhotoAsync(
+        BotPhotoSendIn input, CancellationToken cancellationToken);
 }

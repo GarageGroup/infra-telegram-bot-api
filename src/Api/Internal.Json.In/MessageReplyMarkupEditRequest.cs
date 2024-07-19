@@ -2,9 +2,7 @@
 
 internal readonly record struct MessageReplyMarkupEditRequestJson : IRequestJson<BotMessage?>
 {
-    public static string BotMethod
-        =>
-        "editMessageReplyMarkup";
+    public static string BotMethod { get; } = "editMessageReplyMarkup";
 
     public required long? ChatId { get; init; }
 

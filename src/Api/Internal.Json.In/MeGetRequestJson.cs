@@ -2,7 +2,5 @@
 
 internal readonly record struct MeGetRequestJson : IRequestJson<BotUser>
 {
-    public static string BotMethod
-        =>
-        "getMe";
+    public static string BotMethod { get; } = "getMe";
 }
