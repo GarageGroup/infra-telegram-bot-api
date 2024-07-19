@@ -4,9 +4,7 @@ namespace GarageGroup.Infra.Telegram.Bot;
 
 internal sealed record class MessageSendRequestJson : IRequestJson<BotMessage>
 {
-    public static string BotMethod
-        =>
-        "sendMessage";
+    public static string BotMethod { get; } = "sendMessage";
 
     public required long ChatId { get; init; }
 

@@ -4,9 +4,7 @@ namespace GarageGroup.Infra.Telegram.Bot;
 
 internal readonly record struct MessageDeleteRequestJson : IRequestJson<Unit>
 {
-    public static string BotMethod
-        =>
-        "deleteMessage";
+    public static string BotMethod { get; } = "deleteMessage";
 
     public required long ChatId { get; init; }
 
