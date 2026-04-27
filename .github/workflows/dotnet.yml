@@ -10,68 +10,29 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
-  
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.0.x'
+      uses: actions/checkout@v6
 
-     # Add NuGet Sources
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: 10.0.x
 
     - name: Create Local NuGet Directory
       run: mkdir ~/nuget
 
-    - name: Add Local Nuget Source
-      run: dotnet nuget add source ~/nuget
+    - name: Restore slnx
+      run: dotnet restore
 
-    - name: Add GarageGroup NuGet Source
-      run: >
-        dotnet nuget add source ${{ vars.GG_NUGET_SOURCE_URL }}
-        -n garage
-        -u ${{ secrets.GG_NUGET_SOURCE_USER_NAME }}
-        -p ${{ secrets.GG_NUGET_SOURCE_USER_PASSWORD }}
-        --store-password-in-clear-text
+    - name: Build slnx
+      run: dotnet build --no-restore -c Release
 
-    # Api.Type
-
-    - name: Restore Api.Type
-      run: dotnet restore ./src/*/Api.Type.csproj
-
-    - name: Build Api.Type
-      run: dotnet build ./src/*/Api.Type.csproj --no-restore  -c Release
-
-    - name: Pack Api.Type
-      run: dotnet pack ./src/*/Api.Type.csproj --no-restore -o ~/nuget  -c Release
-
-    # Api.Contract
-
-    - name: Restore Api.Contract
-      run: dotnet restore ./src/*/Api.Contract.csproj
-
-    - name: Build Api.Contract
-      run: dotnet build ./src/*/Api.Contract.csproj --no-restore  -c Release
-
-    - name: Pack Api.Contract
-      run: dotnet pack ./src/*/Api.Contract.csproj --no-restore -o ~/nuget  -c Release
-
-    # Api
-
-    - name: Restore Api
-      run: dotnet restore ./src/*/Api.csproj
-
-    - name: Build Api
-      run: dotnet build ./src/*/Api.csproj --no-restore  -c Release
-
-    - name: Pack Api
-      run: dotnet pack ./src/*/Api.csproj --no-restore -o ~/nuget  -c Release
-
-    # Push
+    - name: Pack slnx
+      run: dotnet pack --no-build -o ~/nuget -c Release
 
     - name: Push Packages
       if: ${{ github.ref == 'refs/heads/main' }}
       run: >
-        dotnet nuget push "../../../nuget/*.nupkg"
-        -s ${{ vars.GG_NUGET_SOURCE_URL }}
-        -k ${{ secrets.GG_NUGET_SOURCE_USER_PASSWORD }}
+        dotnet nuget push ~/nuget/*.nupkg
+        -s https://api.nuget.org/v3/index.json
+        -k ${{ secrets.NUGET_SECRET }}
         --skip-duplicate
