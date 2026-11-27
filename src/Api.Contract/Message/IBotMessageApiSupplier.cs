@@ -9,6 +9,9 @@ public interface IBotMessageApiSupplier
     ValueTask<Result<BotMessage, Failure<TelegramBotFailureCode>>> SendMessageAsync(
         BotMessageSendIn input, CancellationToken cancellationToken);
 
+    ValueTask<Result<BotMessage, Failure<TelegramBotFailureCode>>> SendRichMessageAsync(
+        BotRichMessageSendIn input, CancellationToken cancellationToken);
+
     ValueTask<Result<BotMessage?, Failure<TelegramBotFailureCode>>> EditTextMessageAsync(
         BotMessageTextEditIn input, CancellationToken cancellationToken);
 
