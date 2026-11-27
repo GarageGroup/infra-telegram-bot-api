@@ -9,7 +9,7 @@
     <NoWarn>$(NoWarn);IDE0130</NoWarn>
     <RootNamespace>GarageGroup.Infra.Telegram.Bot</RootNamespace>
     <AssemblyName>GarageGroup.Infra.Telegram.Bot.Api.Type</AssemblyName>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
