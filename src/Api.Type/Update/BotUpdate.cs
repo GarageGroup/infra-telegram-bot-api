@@ -38,4 +38,8 @@ public sealed record class BotUpdate
     public BotChatMemberUpdated? ChatMember { get; init; }
 
     public BotChatJoinRequest? ChatJoinRequest { get; init; }
+
+    public BotWidgetQuery? WidgetQuery { get; init; }
+
+    public BotSharedWidgetQuery? SharedWidgetQuery { get; init; }
 }

@@ -38,4 +38,8 @@ internal sealed record class BotUpdateJson
     public BotChatMemberUpdated? ChatMember { get; init; }
 
     public BotChatJoinRequest? ChatJoinRequest { get; init; }
+
+    public BotWidgetQuery? WidgetQuery { get; init; }
+
+    public BotSharedWidgetQuery? SharedWidgetQuery { get; init; }
 }

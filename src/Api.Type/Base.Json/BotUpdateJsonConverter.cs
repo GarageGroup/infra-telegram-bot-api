@@ -31,7 +31,9 @@ internal sealed class BotUpdateJsonConverter : JsonConverter<BotUpdate>
             PollAnswer = updateJson.PollAnswer,
             MyChatMember = updateJson.MyChatMember,
             ChatMember = updateJson.ChatMember,
-            ChatJoinRequest = updateJson.ChatJoinRequest
+            ChatJoinRequest = updateJson.ChatJoinRequest,
+            WidgetQuery = updateJson.WidgetQuery,
+            SharedWidgetQuery = updateJson.SharedWidgetQuery
         };
     }
 
@@ -58,7 +60,9 @@ internal sealed class BotUpdateJsonConverter : JsonConverter<BotUpdate>
             PollAnswer = value.PollAnswer,
             MyChatMember = value.MyChatMember,
             ChatMember = value.ChatMember,
-            ChatJoinRequest = value.ChatJoinRequest
+            ChatJoinRequest = value.ChatJoinRequest,
+            WidgetQuery = value.WidgetQuery,
+            SharedWidgetQuery = value.SharedWidgetQuery
         };
 
         JsonSerializer.Serialize(writer, updateJson, BotDefaultJson.SerializerOptions);
