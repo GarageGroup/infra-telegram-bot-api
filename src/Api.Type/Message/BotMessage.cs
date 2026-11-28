@@ -141,5 +141,7 @@ public sealed record class BotMessage
 
     public BotWebAppData? WebAppData { get; init; }
 
+    public BotWidget? Widget { get; init; }
+
     public BotInlineKeyboardMarkup? ReplyMarkup { get; init; }
 }
